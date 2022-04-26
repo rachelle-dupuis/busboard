@@ -11,10 +11,6 @@ const longitude = coordinates.longitude;
 getStopCodesFromCoordinates(latitude, longitude).then(stops => {
     stops.forEach((stop) => {
         console.log(`The next buses arriving at ${stop.stopName} ${stop.stopIndicator} are:`);
-        getNextArrivingBuses(stop.stopId).then(buses => {
-            buses.forEach((bus) => {
-                console.log(bus);
-            })
-        });
+        getNextArrivingBuses(stop.stopId);
     })
 });
