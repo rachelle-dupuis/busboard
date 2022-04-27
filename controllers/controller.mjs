@@ -1,6 +1,6 @@
 import {getBuses} from "../index.mjs";
 
-export const getCoordinates = (req, res) => {
-    let data = getBuses();
-    res.render({data: data});
+export const getAllBuses = async (req, res) => {
+    const buses = await getBuses('NW5 1TL');
+    res.json(buses);
 }
