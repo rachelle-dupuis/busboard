@@ -14,8 +14,6 @@ app.get('/departureBoards/:postcode', async function (req, res, next) {
     res.json(buses);
 })
 
-//app.get('/departureBoards', testController.getAllBuses);
-
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
 })

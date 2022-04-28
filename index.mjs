@@ -12,19 +12,4 @@ export async function getBuses(postcode) {
         allBuses.push({stopName: stop.stopName, stopNumber: stop.stopIndicator, buses: buses});
     }
     return allBuses;
-    // getCoordinatesFromPostcode(postcode).then(coordinates => {
-    //     getStopCodesFromCoordinates(coordinates.latitude, coordinates.longitude).then(stops => {
-    //         stops.forEach((stop) => {
-    //             getNextArrivingBuses(stop.stopId).then(buses => {
-    //                 return new Promise(res => {
-    //                     console.log(buses);
-    //                     res(buses);
-    //                 });
-    //             });
-    //         })
-    //     });
-    // })
 }
-
-// const buses = await getBuses('SW112AJ');
-// console.log(buses);

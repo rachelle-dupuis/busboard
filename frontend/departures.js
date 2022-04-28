@@ -6,9 +6,18 @@ function getBusesByPostcode(postcode){
     xhttp.setRequestHeader('Content-Type', 'application/json');
 
     xhttp.onload = function() {
-        // Handle response here using e.g. xhttp.status, xhttp.response, xhttp.responseText
-
-        document.getElementById("results").innerHTML = this.responseText;
+        var stops = JSON.parse(this.response);
+        let text = "<ul>"
+        for (const stop of stops) {
+            let buses = stop.buses;
+            text += "The next buses arriving at " + stop.stopName + stop.stopNumber;
+            for (const bus of buses) {
+                text += "<li>"
+                text += bus.line + " heading towards " + bus.destination + " arriving in " + bus.time + " minutes" + "</li>"
+            }
+        }
+        text += "</ul>"
+        document.getElementById("results").innerHTML = text;
     }
     xhttp.send();
 }
