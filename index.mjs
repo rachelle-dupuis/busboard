@@ -5,9 +5,7 @@ import {getNextArrivingBuses} from "./client/getNextArrivingBuses.mjs";
 
 export async function getBuses(postcode) {
     const coordinates = await getCoordinatesFromPostcode(postcode);
-    const latitude = coordinates.latitude;
-    const longitude = coordinates.longitude;
-    const stops = await getStopCodesFromCoordinates(latitude, longitude);
+    const stops = await getStopCodesFromCoordinates(coordinates.latitude, coordinates.longitude);
     let allBuses = [];
     for (const stop of stops) {
         const buses = await getNextArrivingBuses(stop.stopId);
