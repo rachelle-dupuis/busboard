@@ -10,8 +10,8 @@ export async function getBuses(postcode) {
     const stops = await getStopCodesFromCoordinates(latitude, longitude);
     let allBuses = [];
     for (const stop of stops) {
-        const buses = await getNextArrivingBuses(stop.stopId, stop.stopName, stop.stopIndicator);
-        allBuses.push(buses);
+        const buses = await getNextArrivingBuses(stop.stopId);
+        allBuses.push({stopName: stop.stopName, stopNumber: stop.stopIndicator, buses: buses});
     }
     return allBuses;
     // getCoordinatesFromPostcode(postcode).then(coordinates => {
@@ -28,5 +28,5 @@ export async function getBuses(postcode) {
     // })
 }
 
-const buses = await getBuses('SW112AJ');
-console.log(buses);
+// const buses = await getBuses('SW112AJ');
+// console.log(buses);
