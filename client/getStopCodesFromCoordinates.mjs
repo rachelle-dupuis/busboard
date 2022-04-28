@@ -3,7 +3,7 @@ import fetch from "node-fetch";
 export async function getStopCodesFromCoordinates(lat, long) {
     const stopUrl = `https://api.tfl.gov.uk/StopPoint/?lat=${lat}&lon=${long}&stopTypes=NaptanOnstreetBusCoachStopPair`
     let stops = [];
-    await fetch(stopUrl)
+    return await fetch(stopUrl)
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not OK');
@@ -17,7 +17,7 @@ export async function getStopCodesFromCoordinates(lat, long) {
                 let stopInfo = {stopId: stop.naptanId, stopName: stop.commonName, stopIndicator: stop.indicator};
                 stops.push(stopInfo);
             });
+            return stops;
         })
-    return stops;
 }
 
