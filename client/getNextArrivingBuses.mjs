@@ -1,7 +1,7 @@
 import fetch from "node-fetch";
 import {Bus} from "../models/models.mjs";
 
-export async function getNextArrivingBuses(stopId) {
+export async function getNextArrivingBuses(stopId, stopName, stopIndicator) {
     const url = `https://api.tfl.gov.uk/StopPoint/${stopId}/Arrivals?api_id=ba9752d29aad406bbeb76a9fa432df18`;
     let buses = [];
     await fetch(url)
@@ -24,5 +24,5 @@ export async function getNextArrivingBuses(stopId) {
                 console.error('There has been a problem with your fetch operation:', error);
             }
         );
-    return buses;
+    return {stopName, stopIndicator, buses};
 }
