@@ -29,4 +29,4 @@ export async function getBuses(postcode) {
 }
 
 const buses = await getBuses('SW112AJ');
-//console.log(buses);
+console.log(buses);
